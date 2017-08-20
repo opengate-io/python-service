@@ -3,9 +3,11 @@ from flask import Flask, jsonify, abort, request, make_response, url_for
 import utilities
 import os
 
-app = Flask(__name__, static_url_path ="")
 if os.environ.get('BASE_URL') is not None:
+    app = Flask(__name__, static_url_path = os.environ['BASE_URL'])
     app.route = utilities.initRouteWithPrefix(app.route, os.environ['BASE_URL'])
+else:
+    app = Flask(__name__, static_url_path ="")
 
 @app.errorhandler(400)
 def not_found(error):

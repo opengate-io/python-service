@@ -2,15 +2,14 @@
 	"swagger": "2.0",
 	"info": {
 		"version": "1.0.0",
-		"title": "Tensorflow Rest APIs"
+		"title": "Python Rest APIs"
 	},
-	"host": "v1.apps.citus.io",
-	"basePath": "/apisrv",
+	"basePath": "BASE_URL",
 	"schemes": ["http"],
 	"tags": [
 		{
 			"name": "Example Tag",
-			"description": "Wrapper of Tensorflow Application",
+			"description": "Wrapper of Python Service Application",
 			"externalDocs": {
 				"description": "Find out more",
 				"url": "http://swagger.io"
@@ -22,7 +21,7 @@
 			"get": {
 				"tags": ["Example Tag"],
 				"description": "Analyze and text out from an image using Tensorflow",
-				"parameters": [					
+				"parameters": [
 					{
 						"name": "secret_key",
 						"in": "query",
@@ -32,7 +31,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Successful response with dynamic body"						
+						"description": "Successful response with dynamic body"
 					},
 					"400": {
 						"description": "Error response when occured"

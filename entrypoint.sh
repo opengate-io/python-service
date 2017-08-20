@@ -14,7 +14,7 @@
 # limitations under the License.
 # ==============================================================================
 echo 'Application base url for static content: '$BASE_URL
-sed -i "s|BASE_URL|$BASE_URL|g" /opt/cloud-apps/static/index.html
-sed -i "s|BASE_URL|$BASE_URL|g" /opt/cloud-apps/static/apis/api-docs.json
+sed -i "s|_BASE_URL_|$BASE_URL|g" /opt/cloud-apps/static/index.html
+sed -i "s|_BASE_URL_|$BASE_URL|g" /opt/cloud-apps/static/apis/api-docs.json
 
 python /opt/cloud-apps/service.py "$@"

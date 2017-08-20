@@ -8,7 +8,7 @@ COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
 # Install latest stable dependancies
-RUN pip --no-cache-dir install requests simplejson flask boto3 uuid
+RUN apk add --update py-pip && pip --no-cache-dir install requests simplejson flask boto3 uuid
 
 VOLUME /opt/cloud-apps
 

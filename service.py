@@ -3,7 +3,7 @@ from flask import Flask, jsonify, abort, request, make_response, url_for
 import utilities
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path ="")
 if os.environ.get('BASE_URL') is not None:
     app.route = utilities.initRouteWithPrefix(app.route, os.environ['BASE_URL'])
 

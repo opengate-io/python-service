@@ -13,7 +13,9 @@ def prefix_route(route_function, prefix='', mask='{0}{1}'):
     '''New function to prefix the route'''
     return route_function(mask.format(prefix, route), *args, **kwargs)
   return newroute
-app.route = prefix_route(app.route, os.environ['BASE_URL'])
+
+if os.environ.get('BASE_URL') is not None:
+    app.route = prefix_route(app.route, os.environ['BASE_URL'])
 
 @app.errorhandler(400)
 def not_found(error):

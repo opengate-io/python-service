@@ -14,6 +14,7 @@ RUN apk add --update py-pip &&\
   rm -rf /var/cache/apk/*
 
 VOLUME /opt/cloud-apps
+VOLUME /opt/cloud-apps/static/apis
 
 # Rest API
 EXPOSE 5000

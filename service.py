@@ -1,7 +1,8 @@
 #!flask/bin/python
 from flask import Flask, jsonify, abort, request, make_response, url_for
 
-app = Flask(__name__, static_url_path = os.environ['BASE_URL'])
+app = Flask(__name__, static_url_path = "")
+app.config["APPLICATION_ROOT"] = os.environ['BASE_URL']
 
 @app.errorhandler(400)
 def not_found(error):

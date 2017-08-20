@@ -3,6 +3,7 @@ FROM python:3.6.2-alpine3.6
 
 # Add the scotch py-service
 COPY service.py /opt/cloud-apps/
+COPY utilities.py /opt/cloud-apps/
 COPY static /opt/cloud-apps/static/
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh

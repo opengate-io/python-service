@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 if os.environ.get('BASE_URL') is not None:
-    app.route = initRouteWithPrefix(app.route, os.environ['BASE_URL'])
+    app.route = utilities.initRouteWithPrefix(app.route, os.environ['BASE_URL'])
 
 @app.errorhandler(400)
 def not_found(error):

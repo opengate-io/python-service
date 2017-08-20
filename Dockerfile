@@ -1,11 +1,14 @@
-# Start with a cloud innovation base tensorflow image with some Python libs preinstalled
-FROM cuongdd1/tensorflow
-
-ENV BASE_URL=/apisrv/${APP_SUB_DOMAIN}~${APP_OWNER_ID}/
+# Start with a python base image with some Python libs preinstalled
+FROM python:3.6.2-alpine3.6
 
 # Add the scotch py-service
 COPY service.py /opt/cloud-apps/
 COPY static /opt/cloud-apps/static/
+COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
+
+# Install latest stable dependancies
+RUN pip --no-cache-dir install requests simplejson flask boto3 uuid
 
 VOLUME /opt/cloud-apps
 
@@ -13,4 +16,4 @@ VOLUME /opt/cloud-apps
 EXPOSE 5000
 
 # Tell the kernel gateway to load the scotch notebook by default
-CMD ["python", "/opt/cloud-apps/service.py"]
+CMD ["/entrypoint.sh", "--allow-root"]

@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-BASE_URL='/apisrv/'${APP_SUB_DOMAIN}'~'${APP_OWNER_ID}'/'
 echo 'Application base url for static content: '$BASE_URL
 sed -i "s|BASE_URL|$BASE_URL|g" /opt/cloud-apps/static/index.html
 

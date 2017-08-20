@@ -3,7 +3,17 @@ from flask import Flask, jsonify, abort, request, make_response, url_for
 import os
 
 app = Flask(__name__, static_url_path = "")
-app.config["APPLICATION_ROOT"] = os.environ['BASE_URL']
+def prefix_route(route_function, prefix='', mask='{0}{1}'):
+  '''
+    Defines a new route function with a prefix.
+    The mask argument is a `format string` formatted with, in that order:
+      prefix, route
+  '''
+  def newroute(route, *args, **kwargs):
+    '''New function to prefix the route'''
+    return route_function(mask.format(prefix, route), *args, **kwargs)
+  return newroute
+app.route = prefix_route(app.route, os.environ['BASE_URL'])
 
 @app.errorhandler(400)
 def not_found(error):

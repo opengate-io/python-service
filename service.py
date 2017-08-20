@@ -5,6 +5,7 @@ import os
 
 app = Flask(__name__, static_url_path ="")
 if os.environ.get('BASE_URL') is not None:
+    app = Flask(__name__, static_url_path =os.environ['BASE_URL'])
     app.route = utilities.initRouteWithPrefix(app.route, os.environ['BASE_URL'])
 
 @app.errorhandler(400)

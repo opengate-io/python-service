@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
+BASE_URL=$(echo $BASE_URL | sed 's/\/*$//g')
 echo 'Application base url for static content: '$BASE_URL
 sed -i "s|_BASE_URL_|$BASE_URL|g" /opt/cloud-apps/static/index.html
 sed -i "s|_BASE_URL_|$BASE_URL|g" /opt/cloud-apps/static/apis/api-docs.json

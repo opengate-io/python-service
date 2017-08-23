@@ -1,5 +1,5 @@
 # Start with a python base image with some Python libs preinstalled
-FROM python:3.6.2-alpine3.6
+FROM cuongdd1/tensorflow
 
 # Add the scotch py-service
 COPY service.py /opt/cloud-apps/

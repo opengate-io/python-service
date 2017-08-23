@@ -47,7 +47,7 @@ def index():
 
 @app.route('/tasks', methods = ['GET'])
 def get_tasks():
-    return jsonify( { 'tasks': map(make_public_task, tasks) } )
+    return jsonify( { 'tasks': list(map(make_public_task, tasks)) } )
 
 @app.route('/tasks/<int:task_id>', methods = ['GET'])
 def get_task(task_id):

@@ -1,5 +1,5 @@
 # Start with a python base image with some Python libs preinstalled
-FROM python:latest
+FROM python:3.6.2-alpine3.6
 
 # Add the scotch py-service
 COPY service.py /opt/cloud-apps/
@@ -9,7 +9,7 @@ COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
 # Install latest stable dependancies
-RUN apt-get update && apt-get install && pip --no-cache-dir install requests simplejson flask boto3 uuid &&\
+RUN apk --update install && pip --no-cache-dir install requests simplejson flask boto3 uuid &&\
   rm -rf /var/lib/apt/lists/* &&\
   rm -rf /var/cache/apk/*
 

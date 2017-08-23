@@ -9,7 +9,7 @@ COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
 # Install latest stable dependancies
-RUN apk --update install && pip --no-cache-dir install requests simplejson flask boto3 uuid &&\
+RUN apk add --update && pip --no-cache-dir install requests simplejson flask boto3 uuid &&\
   rm -rf /var/lib/apt/lists/* &&\
   rm -rf /var/cache/apk/*
 
